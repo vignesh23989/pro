@@ -1,0 +1,44 @@
+{% extends 'students/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_superuser %}
+<a type="button" href="/add-student" class="btn btn-primary">Add</a>
+{% endif %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Address</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Age</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Department</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stu in data %}
+      <tr>
+        <td scope="row">{{stu.first_name}}</td>
+        <td scope="row">{{stu.last_name}}</td>
+        <td scope="row">{{stu.gender}}</td>
+        <td scope="row">{{stu.address}}</td>
+        <td scope="row">{{stu.DOB}}</td>
+        <td scope="row">{{stu.age}}</td>
+        <td scope="row">{{stu.phone}}</td>
+        <td scope="row">{{stu.department}}</td>
+        <td scope="row">
+          <a href="/edit-student/{{stu.id}}">Edit</a> 
+          | 
+          <a href="delete/{{stu.id}}">Delete</a>
+        </td>
+      </tr> 
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

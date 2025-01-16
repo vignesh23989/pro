@@ -1,0 +1,17 @@
+<!-- templates/signup.html -->
+{% extends 'students/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <form method="post" novalidate>
+    {% csrf_token %}
+    {% comment %} Basic view {% endcomment %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {{ form | crispy  }}
+    <button type="submit">Sign up</button>
+    </form>
+{% endblock %}
+
+

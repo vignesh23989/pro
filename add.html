@@ -1,0 +1,14 @@
+{% extends 'students/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <form method="post" validate>
+    {% csrf_token %}
+    {{ form | crispy  }}
+    <button type="submit">Add</button>
+    </form>
+{% endblock %}
+
+
